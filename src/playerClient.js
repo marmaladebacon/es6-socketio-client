@@ -10,7 +10,7 @@ export default class PlayerClient{
         this.socket = io.connect(this.url,{reconnect:true});
         this.socket.on('connect', ()=>{
             console.log('Connecting from node client');
-            this.socket.emit('join', {roomName: 'players', playerName: 'playerName'});
+            this.socket.emit('join', {roomName: 'players', playerName: this.playerName});
         });
         let boundloop = this.logicLoop.bind(this);
         let fps = 30;
@@ -18,6 +18,7 @@ export default class PlayerClient{
     }
 
     logicLoop(){
-        this.socket.emit('move', {x:0.1, y:0.1});
+        //debugger;
+        this.socket.emit('setvelocity', {x:1, y:1});
     }
 }
