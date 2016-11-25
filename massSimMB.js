@@ -1,7 +1,7 @@
 //Stress test up to 40 agents
 
 require("babel-core/register");
-var PlayerClient = require('./src/playerClient.js').default;
+var PlayerClient = require('./src/PlayerClient.js').default;
 var url = 'http://marmaladebacon.com';
 
 let count = 0;
