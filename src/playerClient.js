@@ -40,9 +40,10 @@ export default class PlayerClient{
     logicLoop(){
         //debugger;
 
-        if(this.model.oldDataCount > 500){
+        if(this.model.oldDataCount > 10){
             console.log('updating client data');
             this.socket.emit('updatePlayerClientData');
+            this.socket.emit('updateNomsLocations');
         }
         else if(this.noms.length === 0){
             console.log('updating noms data')
@@ -50,10 +51,10 @@ export default class PlayerClient{
         }
 
         let closestNom = this.ClosestNom();
-        if(!_.isNull(closestNom) && !_.isUndefined(closestNom)){
-            console.log('chasing noms');
+        if(!_.isNull(closestNom) && !_.isUndefined(closestNom)){        
             let deltaX = closestNom.x - this.model.posX;
             let deltaY = closestNom.y - this.model.posY;
+            console.log('chasing noms: '+deltaX+', '+deltaY);
             let length = Math.sqrt( (deltaX * deltaX) + (deltaY*deltaY) );
             this.socket.emit('setvelocity', {x:deltaX/length, y:deltaY/length});
         }else{

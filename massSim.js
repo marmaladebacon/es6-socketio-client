@@ -7,7 +7,7 @@ var url = 'http://localhost:8000';
 let count = 0;
 let players = [];
 setInterval(()=>{
-    if(count < 40){
+    if(count < 15){
         let p = new PlayerClient(url, 'matthew:'+count);
         p.Go();
         players.push(p);
