@@ -6,8 +6,9 @@ var url = 'http://marmaladebacon.com';
 
 let count = 0;
 let players = [];
+//Try not to go crazy on my server please =P
 setInterval(()=>{
-    if(count < 40){
+    if(count < 5){
         let p = new PlayerClient(url, 'matthew:'+count);
         p.Go();
         players.push(p);
